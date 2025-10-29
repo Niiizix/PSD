@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recrutement | SAHP - PSD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <div class="gtarp-warning">
+        ATTENTION: Ce site est destiné à GTARP et n'est pas un site officiel du gouvernement américain. Si vous cherchez le site de la CHP, rendez-vous sur <a href="https://www.chp.ca.gov/" target="_blank">chp.ca.gov</a>
+    </div>
+
+    <header class="psd-header">
+        <div class="header-container">
+            <div class="brand-identity">
+                <a href="index.html"><img src="imgs/NAV_LOGO.png" alt="Logo SAHP" class="sahp-logo"></a> 
+            </div>
+            <nav class="psd-nav">
+                <ul>
+                    <li><a href="index.html">ACCUEIL</a></li>
+                    <li class="dropdown-parent">
+                        <a href="#" class="no-hover-effect">DIVISIONS</a> 
+                        <ul class="dropdown-menu">
+                            <li><a href="DPS.html">DPS</a></li>
+                            <li><a href="SOPD.html">SOPD</a></li>
+                            <li><a href="GPDS.html">GPDS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="recrutement.html" class="active">RECRUTEMENT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="media.html">MEDIAS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content-modern">
+
+        <section class="hero-section hero-recruitment-bg">
+            <div class="hero-overlay">
+                <div class="header-content">
+                    <h1>RECRUTEMENTS</h1>
+                    <p>Découvrez les prérequis et le processus pour rejoindre l'unité d'élite de la SAHP.</p>
+                    <a href="javascript:void(0)" id="openModalBtn" class="btn-primary">POSTULER MAINTENANT</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="main-content-box"> 
+            
+            <section class="section-content">
+                <h2>Prérequis Essentiels</h2>
+                <p>Pour garantir l'excellence et le professionnalisme de notre division, nous exigeons des candidats qu'ils remplissent les critères suivants :</p>
+                <ul class="prerequis-list">
+                    <li>Être membre actif de la San Andreas Highway Patrol depuis un minimum de 1 mois;</li>
+                    <li>Avoir atteint le grade d'Officer;</li>
+                    <li>Avoir un dossier disciplinaire vierge;</li>
+                    <li>Faire preuve de discrétion, de rigueur et d'un sang-froid irréprochable en situation de crise.</li>
+                </ul>
+            </section>
+
+            <hr>
+
+            <section class="section-content">
+                <h2>Processus de Candidature et de Sélection</h2>
+                <p>Le recrutement pour la Protective Services Division se déroule en plusieurs étapes rigoureuses :</p>
+                <ol class="processus-list">
+                    <li>
+                        <strong>Dépôt du Dossier de Candidature</strong>
+                        <p>Après avoir soumis votre dossier de candidature, vous serez recontacté par le Commanding Officer ou son assistant.</p>
+                    </li>
+                    <li>
+                        <strong>Entretien Oral</strong>
+                        <p>Si votre dossier est retenu, vous serez convoqué pour un entretien individuel avec le Commanding Officer ou son assistant.</p>
+                    </li>
+                    <li>
+                        <strong>Phase de Formation</strong>
+                        <p>Les candidats sélectionnés effectueront leur formation initiale.</p>
+                    </li>
+                    <li>
+                        <strong>Intégration</strong>
+                        <p>Les candidats ayant satisfait aux exigences de la formation initiale seront ensuite intégrés à la division.</p>
+                    </li>
+                </ol>
+            </section>
+            
+            </div>
+        
+    </main>
+
+    <footer class="psd-footer">
+        <div class="footer-container">
+            <p class="copyright-text">&copy; Propriété intellectuelle de @mater41 | Toute copie partielle ou complète est valable de poursuites judiciaires.</p>
+            <div class="footer-links-group">
+                <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042814694" target="_blank">Mentions Légales</a>
+                <a href="https://discord.gg/madonne" target="_blank">MadonneStudio - FivePD</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            
+            <h2>Dossier de Candidature PSD</h2>
+            <p class="form-intro">Veuillez remplir le formulaire ci-dessous. Tous les champs marqués d'une étoile (*) sont obligatoires.</p>
+
+            <form id="recruitment-form" action="https://docs.google.com/forms/u/0/d/e/FAUX_URL_A_REMPLACER/formResponse" method="POST" target="hidden_iframe">
+                
+                <fieldset>
+                    <legend>Partie 1 : Informations Personnelles</legend>
+                    
+                    <div class="form-group grid-2">
+                        <label for="name">Nom et Prénom *</label>
+                        <input type="text" id="name" name="entry.1234567890" required>
+                    </div>
+
+                    <div class="form-group grid-2">
+                        <label for="dob">Date de Naissance (JJ/MM/AAAA) *</label>
+                        <input type="date" id="dob" name="entry.1234567891" required pattern="\d{4}-\d{2}-\d{2}">
+                    </div>
+                    
+                    <div class="form-group grid-2">
+                        <label for="badge">Numéro de Badge et Matricule *</label>
+                        <input type="text" id="badge" name="entry.1234567892" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="grade">Grade Actuel *</label>
+                        <select id="grade" name="entry.1234567893" required>
+                            <option value="" disabled selected>Sélectionnez votre grade</option>
+                            <option value="Officer">Officer</option>
+                            <option value="FTO">FTO</option>
+                            <option value="Sergeant">Sergeant</option>
+                            <option value="Lieutenant">Lieutenant</option>
+                            <option value="Captain">Captain</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Partie 2 : Parcours Professionnel</legend>
+                    
+                    <div class="form-group">
+                        <label for="time_hp">Depuis combien de temps servez-vous à la highway patrol ? (Mois) *</label>
+                        <input type="number" id="time_hp" name="entry.1234567894" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Avez-vous déjà servi dans une division spécialisée ? *</label>
+                        <div class="radio-group" id="served-division-toggle">
+                            <label for="div_yes">
+                                <input type="radio" id="div_yes" name="entry.1234567895" value="Oui" required onclick="toggleHiddenField(true)">
+                                Oui
+                            </label>
+                            <label for="div_no">
+                                <input type="radio" id="div_no" name="entry.1234567895" value="Non" onclick="toggleHiddenField(false)">
+                                Non
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group hidden-field" id="specialty-division-field">
+                        <label for="which_div">Laquelle ? *</label>
+                        <input type="text" id="which_div" name="entry.1234567896">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Avez-vous une formation préalable en protection rapprochée, escorte ou sécurité VIP ? *</label>
+                        <div class="radio-group">
+                            <label for="form_yes">
+                                <input type="radio" id="form_yes" name="entry.1234567897" value="Oui" required>
+                                Oui
+                            </label>
+                            <label for="form_no">
+                                <input type="radio" id="form_no" name="entry.1234567897" value="Non">
+                                Non
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Êtes-vous titulaire d'une certification en tir de précision ou armes à feu avancé (Fusil d'assaut) ? *</label>
+                        <div class="radio-group">
+                            <label for="cert_yes">
+                                <input type="radio" id="cert_yes" name="entry.1234567898" value="Oui" required>
+                                Oui
+                            </label>
+                            <label for="cert_no">
+                                <input type="radio" id="cert_no" name="entry.1234567898" value="Non">
+                                Non
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Partie 3 : Compétences et aptitudes</legend>
+
+                    <div class="form-group scale-group">
+                        <label>Quel est votre niveau de conduite ? *</label>
+                        <div class="scale-radio-container" id="conduite-scale">
+                            <label>
+                                <input type="radio" name="entry.1234567899" value="Débutant" required>
+                                <span class="scale-label-text">Débutant</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="entry.1234567899" value="Intermédiaire">
+                                <span class="scale-label-text">Intermédiaire</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="entry.1234567899" value="Avancé">
+                                <span class="scale-label-text">Avancé</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="entry.1234567899" value="Expert">
+                                <span class="scale-label-text">Expert</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group scale-group">
+                        <label>Quelle est votre condition physique actuelle ? *</label>
+                        <div class="scale-radio-container" id="physique-scale">
+                            <label>
+                                <input type="radio" name="entry.1234568003" value="Faible" required>
+                                <span class="scale-label-text">Faible</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="entry.1234568003" value="Moyenne">
+                                <span class="scale-label-text">Moyenne</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="entry.1234568003" value="Bonne">
+                                <span class="scale-label-text">Bonne</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="entry.1234568003" value="Excellente">
+                                <span class="scale-label-text">Excellente</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Êtes-vous capable de travailler sous forte pression ? *</label>
+                        <div class="radio-group">
+                            <label for="pressure_yes">
+                                <input type="radio" id="pressure_yes" name="entry.1234568007" value="Oui" required>
+                                Oui
+                            </label>
+                            <label for="pressure_no">
+                                <input type="radio" id="pressure_no" name="entry.1234568007" value="Non">
+                                Non
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Partie 4 : Expérience et cas pratiques</legend>
+                    
+                    <div class="form-group">
+                        <label for="experience_desc">Décrivez une situation où vous avez dû prendre une décision rapide pour protéger une personne ou gérer une crise ? *</label>
+                        <textarea id="experience_desc" name="entry.1234568008" rows="6" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="convoy_scenario">Que feriez-vous si, lors d'un convoi, un véhicule suspect tentait de forcer le passage ? *</label>
+                        <textarea id="convoy_scenario" name="entry.1234568009" rows="6" required></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Partie 5 : Questions Techniques</legend>
+
+                    <div class="form-group">
+                        <label>Quel est l’objectif principal de la protection rapprochée ? *</label>
+                        <div class="radio-group-vertical">
+                            <label for="tech_q1_a">
+                                <input type="radio" id="tech_q1_a" name="entry.1234568010" value="Neutraliser les menaces par la force." required>
+                                Neutraliser les menaces par la force.
+                            </label>
+                            <label for="tech_q1_b">
+                                <input type="radio" id="tech_q1_b" name="entry.1234568010" value="Prévenir les menaces et assurer la sécurité du VIP.">
+                                Prévenir les menaces et assurer la sécurité du VIP.
+                            </label>
+                            <label for="tech_q1_c">
+                                <input type="radio" id="tech_q1_c" name="entry.1234568010" value="Surveiller uniquement la foule.">
+                                Surveiller uniquement la foule.
+                            </label>
+                            <label for="tech_q1_d">
+                                <input type="radio" id="tech_q1_d" name="entry.1234568010" value="Attendre qu’un incident survienne pour réagir.">
+                                Attendre qu’un incident survienne pour réagir.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>La protection repose principalement sur : *</label>
+                        <div class="radio-group-vertical">
+                            <label for="tech_q2_a">
+                                <input type="radio" id="tech_q2_a" name="entry.1234568011" value="La prévention et l’anticipation." required>
+                                La prévention et l’anticipation.
+                            </label>
+                            <label for="tech_q2_b">
+                                <input type="radio" id="tech_q2_b" name="entry.1234568011" value="La réaction uniquement.">
+                                La réaction uniquement.
+                            </label>
+                            <label for="tech_q2_c">
+                                <input type="radio" id="tech_q2_c" name="entry.1234568011" value="L’intervention armée immédiate.">
+                                L’intervention armée immédiate.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Quel agent est responsable de la reconnaissance préalable des lieux et de la logistique ? *</label>
+                        <div class="radio-group-vertical">
+                            <label for="tech_q3_a">
+                                <input type="radio" id="tech_q3_a" name="entry.1234568012" value="Flanker" required>
+                                Flanker
+                            </label>
+                            <label for="tech_q3_b">
+                                <input type="radio" id="tech_q3_b" name="entry.1234568012" value="Team Leader">
+                                Team Leader
+                            </label>
+                            <label for="tech_q3_c">
+                                <input type="radio" id="tech_q3_c" name="entry.1234568012" value="Advance Agent">
+                                Advance Agent
+                            </label>
+                            <label for="tech_q3_d">
+                                <input type="radio" id="tech_q3_d" name="entry.1234568012" value="Rear Guard">
+                                Rear Guard
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quelle est la distance idéale entre les agents et le VIP ? *</label>
+                        <div class="radio-group-vertical">
+                            <label for="tech_q4_a">
+                                <input type="radio" id="tech_q4_a" name="entry.1234568013" value="0.5 mètres" required>
+                                0.5 mètres
+                            </label>
+                            <label for="tech_q4_b">
+                                <input type="radio" id="tech_q4_b" name="entry.1234568013" value="1 mètre">
+                                1 mètre
+                            </label>
+                            <label for="tech_q4_c">
+                                <input type="radio" id="tech_q4_c" name="entry.1234568013" value="2 mètres">
+                                2 mètres
+                            </label>
+                            <label for="tech_q4_d">
+                                <input type="radio" id="tech_q4_d" name="entry.1234568013" value="plus de 3 mètres">
+                                plus de 3 mètres
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quelle est la règle d’or en cas de menace ? *</label>
+                        <div class="radio-group-vertical">
+                            <label for="tech_q5_a">
+                                <input type="radio" id="tech_q5_a" name="entry.1234568014" value="Neutraliser la menace avant de sécuriser le VIP." required>
+                                Neutraliser la menace avant de sécuriser le VIP.
+                            </label>
+                            <label for="tech_q5_b">
+                                <input type="radio" id="tech_q5_b" name="entry.1234568014" value="Sécuriser le VIP avant toute autre action.">
+                                Sécuriser le VIP avant toute autre action.
+                            </label>
+                            <label for="tech_q5_c">
+                                <input type="radio" id="tech_q5_c" name="entry.1234568014" value="Toujours rester sur place jusqu’à l’arrivée des renforts.">
+                                Toujours rester sur place jusqu’à l’arrivée des renforts.
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quelle manœuvre est utilisée pour extraire rapidement le VIP d’une zone dangereuse ? *</label>
+                        <div class="radio-group-vertical">
+                            <label for="tech_q6_a">
+                                <input type="radio" id="tech_q6_a" name="entry.1234568015" value="Technique PIT inversée" required>
+                                Technique PIT inversée
+                            </label>
+                            <label for="tech_q6_b">
+                                <input type="radio" id="tech_q6_b" name="entry.1234568015" value="Manœuvre en 'Y'">
+                                Manœuvre en "Y"
+                            </label>
+                            <label for="tech_q6_c">
+                                <input type="radio" id="tech_q6_c" name="entry.1234568015" value="Formation Box">
+                                Formation Box
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>En cas de foule hostile, quelle est la priorité absolue ? *</label>
+                        <div class="radio-group-vertical">
+                            <label for="tech_q7_a">
+                                <input type="radio" id="tech_q7_a" name="entry.1234568016" value="Arrestation immédiate des personnes agressives." required>
+                                Arrestation immédiate des personnes agressives.
+                            </label>
+                            <label for="tech_q7_b">
+                                <input type="radio" id="tech_q7_b" name="entry.1234568016" value="Protéger physiquement le VIP et l’extraire vers un véhicule sécurisé.">
+                                Protéger physiquement le VIP et l’extraire vers un véhicule sécurisé.
+                            </label>
+                            <label for="tech_q7_c">
+                                <input type="radio" id="tech_q7_c" name="entry.1234568016" value="Négocier avec la foule avant d’agir">
+                                Négocier avec la foule avant d’agir
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Partie 6 : Motivations</legend>
+                    
+                    <div class="form-group">
+                        <label for="motivation_text">Expliquez en quelques phrases pourquoi vous souhaitez intégrer la Protective Services Division et qu'est ce que vous pensez pouvoir y apporter ? *</label>
+                        <textarea id="motivation_text" name="entry.1234568017" rows="8" required></textarea>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn-primary form-submit-btn">Soumettre Ma Candidature</button>
+                <div id="form-message" style="display:none;" class="success-message">Candidature envoyée avec succès !</div>
+
+            </form>
+
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script> 
+</body>
+</html>

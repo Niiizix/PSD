@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Médias | SAHP - PSD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="gtarp-warning">
+        ATTENTION: Ce site est destiné à GTARP et n'est pas un site officiel du gouvernement américain. Si vous cherchez le site de la CHP, rendez-vous sur <a href="https://www.chp.ca.gov/" target="_blank">chp.ca.gov</a>
+    </div>
+
+    <header class="psd-header">
+        <div class="header-container">
+            <div class="brand-identity">
+                <a href="index.html"><img src="imgs/NAV_LOGO.png" alt="Logo SAHP" class="sahp-logo"></a> 
+            </div>
+            <nav class="psd-nav">
+                <ul>
+                    <li><a href="index.html">ACCUEIL</a></li>
+                    <li class="dropdown-parent">
+                        <a href="#" class="no-hover-effect">DIVISIONS</a> 
+                        <ul class="dropdown-menu">
+                            <li><a href="DPS.html">DPS</a></li>
+                            <li><a href="SOPD.html">SOPD</a></li>
+                            <li><a href="GPDS.html">GPDS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="recrutement.html">RECRUTEMENT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="media.html" class="active">MÉDIAS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content-modern">
+
+        <section class="hero-section hero-media-bg"> 
+            <div class="hero-overlay">
+                <div class="header-content">
+                    <h1>GALERIE MÉDIAS</h1>
+                    <p>Revivez l'action et le professionnalisme de la Protective Services Division sur le terrain.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="main-content-box">
+            
+            <section class="section-content">
+                <h2>Galerie Photos</h2>
+                <p>Ces images sont fréquemment mises à jour par nos techniciens.</p>
+                
+                <div id="media-gallery" class="media-gallery-grid">
+                    <p>Chargement des photos...</p>
+                </div>
+
+                <div id="loading-error" class="error-message" style="display:none; margin-top: 30px;">
+                    Erreur de chargement des images. Veuillez réessayer plus tard.
+                </div>
+
+            </section>
+        </div>
+        
+    </main>
+
+    <footer class="psd-footer">
+        <div class="footer-container">
+            <p class="copyright-text">&copy; Propriété intellectuelle de @mater41 | Toute copie partielle ou complète est valable de poursuites judiciaires.</p>
+            <div class="footer-links-group">
+                <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042814694" target="_blank">Mentions Légales</a>
+                <a href="https://discord.gg/madonne" target="_blank">MadonneStudio - FivePD</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> 
+
+</body>
+</html>

@@ -1,0 +1,979 @@
+/*
+ * STYLE.CSS - Template Finale : Professionnelle, Épurée, Cohérente
+ * Couleurs : Bleu Marine (#1C3F60) et Or Vif (#FFC72C)
+ */
+
+/* --- 1. Variables et Réinitialisation de Base --- */
+:root {
+    /* Couleur Primaire Uniformisée : Bleu Marine (utilisée pour Header et Footer) */
+    --color-primary-blue: #1C3F60;   
+    --color-accent-gold: #FFC72C;     /* Or Vif */
+    --color-text-light: #E0E7FF;      /* Blanc/Gris très clair */
+    --color-background-light: #F4F7FB; /* Fond très clair */
+    --color-text-dark: #333333;       /* Texte général */
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    background-color: var(--color-background-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-text-dark);
+}
+
+/* Bannière d'avertissement GTARP */
+.gtarp-warning {
+    background: #8b0000;
+    color: white;
+    text-align: center;
+    padding: 8px 0;
+    font-weight: 500;
+    font-size: 13px;
+    border-bottom: 1px solid #666;
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+}
+
+.gtarp-warning a {
+  color: white;        
+  text-decoration: underline;  
+}
+
+.gtarp-warning a:hover {
+  color: #add8e6; /* Bleu clair pour le survol */
+  text-decoration: underline;
+}
+
+/* --- 2. HEADER & NAVIGATION --- */
+.psd-header {
+    background-color: var(--color-primary-blue); 
+    color: var(--color-text-light);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.header-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-identity {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sahp-logo {
+    height: 100px; 
+    width: auto;
+}
+
+/* 2.1. Navigation Principale */
+.psd-nav > ul { 
+    list-style: none;
+    display: flex;
+    margin-left: 250px;
+    gap: 10px;
+}
+
+/* Styles des Liens de Navigation (y compris la base pour le dropdown) */
+.psd-nav li a {
+    /* Base Flex pour aligner la flèche */
+    display: flex; 
+    align-items: center;
+    gap: 5px; 
+    position: relative; 
+    
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--color-text-light);
+    font-weight: 600;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 3px solid transparent; 
+}
+
+/* Effets de Survol/Actif Standard */
+.psd-nav li a:hover, 
+.psd-nav li a.active {
+    color: var(--color-accent-gold);
+    border-bottom: 3px solid var(--color-accent-gold);
+}
+
+
+/* --- 2.2. MENU DÉROULANT (DROPDOWN) --- */
+
+/* Parent : Positionnement relatif nécessaire */
+.dropdown-parent {
+    position: relative; 
+}
+
+/* Lien Parent : Désactivation des effets de survol standards */
+.psd-nav li .no-hover-effect:hover, 
+.psd-nav li .no-hover-effect.active {
+    color: var(--color-text-light); 
+    border-bottom: 3px solid transparent; 
+}
+
+/* Flèche (Indicateur) : Style par défaut (Fermé) */
+.dropdown-parent > a::after {
+    content: '\25B6'; /* Flèche droite (►) */
+    font-size: 0.6em;
+    margin-left: 5px;
+    color: var(--color-text-light);
+    transition: transform 0.3s ease, color 0.3s;
+}
+
+/* Flèche (Indicateur) : Style au survol (Ouvert) */
+.dropdown-parent:hover > a::after {
+    content: '\25BC'; /* Flèche bas (▼) */
+    color: var(--color-text-light); /* La flèche prend la couleur d'accentuation */
+    transform: rotate(0deg); 
+}
+
+/* Sous-liste (Masquage et Positionnement) */
+.dropdown-menu {
+    display: none; /* Masque la liste par défaut */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-primary-blue); 
+    min-width: 150px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    padding: 5px 0;
+    margin: 0; 
+}
+
+/* Affichage de la sous-liste au survol */
+.dropdown-parent:hover .dropdown-menu {
+    display: block;
+}
+
+/* Styles des liens de la sous-liste (Vertical) */
+.dropdown-menu li {
+    display: block; 
+    width: 100%;
+}
+
+.dropdown-menu li a {
+    padding: 8px 15px; 
+    border-bottom: none; 
+}
+
+.dropdown-menu li a:hover {
+    color: var(--color-accent-gold);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* --- 3. SECTIONS COMMUNES ET INDEX.HTML --- */
+.main-content-modern {
+    flex-grow: 1; 
+    padding: 0; 
+    max-width: 100%; 
+    width: 100%;
+}
+
+/* Boutons d'Action (Primaires) */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--color-accent-gold);
+    color: var(--color-primary-blue) !important;
+    text-decoration: none;
+    padding: 12px 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    border: 2px solid var(--color-accent-gold);
+}
+
+.btn-primary:hover {
+    background-color: #f7a900; 
+    transform: translateY(-2px);
+}
+/* Style spécifique pour le bouton soumission du formulaire */
+.form-submit-btn {
+    width: 100%;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+}
+
+/* 3.1. Section HÉRO */
+.hero-section {
+    background-image: url('imgs/HERO.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.6); 
+    color: var(--color-text-light);
+    max-width: 800px;
+    border-radius: 8px;
+}
+
+.hero-overlay h1 {
+    font-size: 3em;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: var(--color-accent-gold);
+}
+
+.hero-subtitle {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+}
+
+/* 3.3. Section Mission */
+.mission-section {
+    max-width: 1300px;
+    margin: 80px auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.mission-text-content {
+    flex: 2;
+}
+
+.mission-text-content h2 {
+    color: var(--color-primary-blue);
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.mission-image-placeholder {
+    flex: 1;
+    min-height: 350px;
+    background-image: url('imgs/MISSIONS.png'); 
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* --- 3.5. Nouvelle Section Contact/Info --- */
+.info-contact-section {
+    max-width: 1300px;
+    margin: 80px auto;
+    padding: 0 30px;
+}
+
+.info-content-placeholder {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.contact-image-placeholder {
+    /* Image Placeholder prenant environ 40% de l'espace */
+    flex: 2;
+    min-height: 400px;
+    background-image: url('imgs/CONTACT_INFO.png'); /* Ajoutez une image ici si vous en avez une ! */
+    background-size: cover;
+    background-position: center;
+}
+
+.contact-details {
+    /* Bloc de texte prenant environ 60% de l'espace */
+    flex: 3;
+    padding: 30px;
+}
+
+.contact-details h2 {
+    color: var(--color-primary-blue);
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    line-height: 2.2;
+}
+
+.contact-list strong {
+    color: var(--color-accent-gold);
+    min-width: 90px;
+    display: inline-block;
+}
+
+/* Style secondaire pour le bouton (à ajouter si ce style n'existe pas déjà) */
+.btn-secondary {
+    display: inline-block;
+    color: var(--color-primary-blue);
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 15px;
+    border-bottom: 2px solid var(--color-accent-gold);
+    transition: color 0.3s;
+}
+
+.btn-secondary:hover {
+    color: var(--color-accent-gold);
+}
+
+/* 3.4. Appel au Recrutement (CTA sur Index) */
+.recruitment-cta {
+    text-align: center;
+    background-color: var(--color-background-light); 
+    padding: 60px 20px;
+    margin-bottom: 0;
+    border-top: 5px solid var(--color-accent-gold);
+}
+
+.recruitment-cta h2 {
+    color: var(--color-primary-blue);
+    font-size: 2.2em;
+    margin-bottom: 15px;
+}
+
+.recruitment-cta p {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+/* --- 4. STYLES SPÉCIFIQUES À LA PAGE RECRUTEMENT (recrutement.html) --- */
+
+.hero-recruitment-bg {
+    background-image: url('imgs/RECRUTEMENT_HERO.png'); /* UTILISEZ LE CHEMIN DE VOTRE NOUVELLE IMAGE */
+}
+
+.hero-section .header-content p {
+    margin-bottom: 30px; 
+}
+
+.section-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px 30px;
+}
+
+.section-content h2 {
+    color: var(--color-primary-blue);
+    font-size: 2em;
+    margin-bottom: 25px;
+    border-bottom: 3px solid var(--color-accent-gold);
+    padding-bottom: 10px;
+}
+
+.prerequis-list, .processus-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.prerequis-list li {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 5px solid var(--color-accent-gold);
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    font-weight: 500;
+}
+
+.processus-list {
+    counter-reset: step-counter;
+}
+
+.processus-list li {
+    counter-increment: step-counter;
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.processus-list li::before {
+    content: "Étape " counter(step-counter);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-primary-blue);
+    color: white;
+    padding: 5px 10px;
+    border-bottom-right-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+.processus-list li strong {
+    display: block;
+    font-size: 1.2em;
+    color: var(--color-accent-gold);
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* La section CTA de la page recrutement DOIT être centrée */
+.cta-recrutement {
+    text-align: center;
+    background-color: var(--color-background-light);
+    padding: 50px 0;
+    border-top: 1px dashed #ccc;
+}
+.cta-recrutement h2 {
+    color: var(--color-primary-blue);
+    font-size: 2.2em;
+    margin-bottom: 15px;
+}
+.cta-recrutement p {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+
+/* --- 5. STYLES DE LA MODALE ET DU FORMULAIRE --- */
+
+/* Conteneur de la Modale (Masqué par défaut) */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    padding: 20px 0;
+}
+
+/* Contenu de la Modale */
+.modal-content {
+    background-color: var(--color-background-light);
+    margin: 5% auto; 
+    padding: 30px;
+    width: 95%; 
+    max-width: 900px; 
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content h2 {
+    color: var(--color-primary-blue);
+    font-size: 2.2em;
+    margin-bottom: 5px;
+}
+
+.form-intro {
+    font-size: 1.1em;
+    color: var(--color-text-dark);
+    margin-bottom: 25px;
+}
+
+/* Bouton de Fermeture */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--color-accent-gold);
+}
+
+/* --- Styles du Formulaire interne --- */
+
+#recruitment-form {
+    padding: 20px 0;
+}
+
+#recruitment-form fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: white;
+}
+
+#recruitment-form legend {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--color-primary-blue);
+    padding: 0 10px;
+    margin-left: -10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    padding-top: 5px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--color-primary-blue);
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+
+/* Grille pour les champs côte à côte */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 15px;
+}
+@media (min-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr 1fr; 
+    }
+}
+
+/* Styles des champs texte, date et select */
+#recruitment-form input:not([type="radio"]):not(.scale-radio-container input),
+#recruitment-form select,
+#recruitment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+    font-family: var(--font-body);
+}
+
+#recruitment-form input:focus,
+#recruitment-form select:focus,
+#recruitment-form textarea:focus {
+    border-color: var(--color-accent-gold);
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 199, 44, 0.5);
+}
+
+/* --- CORRECTION 1 : Radios Standard (Partie 2, 5) --- */
+
+/* Conteneur principal pour les options de radio (flexbox pour alignement) */
+.radio-group, .radio-group-vertical {
+    display: flex;
+    gap: 20px;
+    /* Correction: Centrage vertical des boutons et du texte */
+    align-items: center; 
+}
+.radio-group-vertical {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 5px;
+    /* Pour le vertical, les options longues ne doivent pas toutes s'aligner au centre */
+    align-items: flex-start; 
+}
+
+/* Le label contient maintenant le texte ET le bouton radio pour le rendre cliquable */
+.radio-group label, .radio-group-vertical label {
+    display: flex;
+    align-items: center; 
+    cursor: pointer;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    /* Petite marge pour les options verticales pour l'espace */
+    padding: 2px 0;
+}
+.radio-group input[type="radio"], .radio-group-vertical input[type="radio"] {
+    /* Placer la radio à gauche du label (par défaut dans le HTML) */
+    margin-right: 8px; 
+    margin-left: 0;
+    width: auto;
+    /* Rendre le bouton plus visible */
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    min-height: 18px;
+    align-self: center;
+}
+
+/* --- CORRECTION 2 : Échelles linéaires (Partie 3) --- */
+
+.scale-group {
+    margin-bottom: 25px;
+}
+.scale-radio-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border: none;
+    margin-top: 10px;
+    gap: 5px; 
+}
+
+/* Nouvelle structure: Chaque option est un label (cliquable) */
+.scale-radio-container label {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1; 
+    padding: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    background-color: var(--color-background-light);
+    transition: all 0.2s;
+    cursor: pointer; 
+    margin: 0 5px; 
+    text-align: center;
+    height: 60px;
+}
+.scale-radio-container label:hover {
+    background-color: #f0f0f0;
+}
+
+.scale-radio-container input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+/* Le texte du label doit être géré par une classe interne (voir HTML) */
+.scale-label-text {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--color-primary-blue);
+    padding: 0 5px;
+    line-height: 1.2;
+}
+
+/* Style pour l'option sélectionnée */
+.scale-radio-container input[type="radio"]:checked + .scale-label-text {
+    /* Changement de couleur du texte si sélectionné */
+    font-weight: 700;
+    color: var(--color-primary-blue);
+}
+
+.scale-radio-container label:focus-within {
+    border-color: var(--color-accent-gold);
+    box-shadow: 0 0 5px rgba(255, 199, 44, 0.8);
+}
+
+.scale-radio-container input[type="radio"]:checked {
+    visibility: hidden;
+    position: absolute;
+    top: -9999px; 
+}
+
+.scale-radio-container input[type="radio"]:checked ~ .scale-label-text {
+    font-weight: 700;
+    color: var(--color-primary-blue);
+}
+
+.scale-radio-container label:has(input[type="radio"]:checked) {
+    border-color: var(--color-primary-blue);
+    box-shadow: 0 0 8px rgba(var(--color-primary-blue), 0.5);
+    background-color: rgba(39, 69, 100, 0.24)
+}
+
+/* Message de succès */
+.success-message {
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    font-weight: 600;
+}
+
+/* Champ conditionnel masqué (JS le rend visible) */
+.hidden-field {}
+
+
+/* --- 6. FOOTER --- */
+.psd-footer {
+    background-color: var(--color-primary-blue); 
+    color: var(--color-text-light);
+    padding: 15px 30px;
+    font-size: 0.85em;
+    margin-top: auto; 
+}
+
+.footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links-group a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    margin-left: 20px;
+    opacity: 0.8;
+    transition: opacity 0.3s, color 0.3s;
+}
+
+.footer-links-group a:hover {
+    color: var(--color-accent-gold);
+    opacity: 1;
+}
+
+/* --- 4.5. HERO MODIFIER: Contact Page --- */
+
+.hero-contact-bg {
+    /* REMPLACEZ CECI PAR LE CHEMIN DE VOTRE IMAGE DE CONTACT */
+    background-image: url('imgs/CONTACT_HERO.png'); 
+}
+
+/* --- 5. STYLES SPÉCIFIQUES À LA PAGE CONTACT (contact.html) --- */
+
+.contact-grid {
+    display: grid;
+    /* Mise en page sur deux colonnes, la carte prenant les deux lignes */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto; 
+    gap: 30px;
+    padding-top: 40px;
+}
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-card {
+    background-color: white;
+    padding: 25px;
+    border-left: 5px solid var(--color-accent-gold);
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.contact-card h2 {
+    color: var(--color-primary-blue);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.contact-details-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-details-list li {
+    margin-bottom: 25px;
+    line-height: 1.4;
+    font-size: 1.1em;
+}
+
+.contact-details-list strong {
+    display: block;
+    color: var(--color-primary-blue);
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.map-placeholder {
+    grid-column: 1 / -1; 
+    padding: 25px;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.map-embed-box {
+    width: 100%;
+    height: 400px;
+    background-image: url('imgs/MESA.png');
+    background-size: cover;
+    background-position: center;
+    display: block; 
+}
+
+/* Style spécifique pour le bouton de la carte */
+.btn-primary-small {
+    display: inline-block;
+    background-color: var(--color-accent-gold);
+    color: var(--color-primary-blue) !important;
+    text-decoration: none;
+    padding: 8px 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.btn-primary-small:hover {
+    background-color: #f7a900; 
+}
+
+/* --- 6. STYLES SPÉCIFIQUES À LA PAGE DPS (DPS.html) --- */
+
+.hero-dps-bg {
+    background-image: url('imgs/DPS_HERO.png'); 
+}
+
+/* Liste des Missions (Pour un look propre) */
+.mission-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.mission-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 1.1em;
+}
+
+.mission-list li strong {
+    color: var(--color-accent-gold);
+    min-width: 250px;
+    display: inline-block;
+}
+
+/* Grille de Hiérarchie */
+.hierarchy-grid {
+    display: grid;
+    /* Mise en page sur 3 colonnes pour les grands écrans */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.member-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.member-photo-container {
+    width: 100%;
+    padding-top: 100%; 
+    background-color: #ddd;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.member-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.vacant-spot {
+    opacity: 0.7;
+    filter: grayscale(100%);
+}
+.vacant-spot p {
+    color: #cc0000;
+}
+
+.member-card h3 {
+    color: var(--color-primary-blue);
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+.member-card p {
+    font-weight: 700;
+    color: var(--color-accent-gold);
+}
+
+/* Styles spécifiques par niveau hiérarchique (pour la couleur) */
+.co-level { border-top: 5px solid var(--color-accent-gold); }
+.aco-level { border-top: 5px solid var(--color-primary-blue); }
+.officer-level { border-top: 5px solid #aaa; }
+
+/* --- 7. STYLES SPÉCIFIQUES À LA PAGE MÉDIAS (media.html) --- */
+
+.hero-media-bg {
+    background-image: url('imgs/MEDIA_HERO.png'); 
+}
+
+.media-gallery-grid {
+    /* Mise en page sur 3 colonnes pour les grands écrans */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.media-item {
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.media-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.media-item img {
+    width: 100%;
+    /* Toutes les images auront la même hauteur pour une grille uniforme */
+    height: 300px; 
+    /* Assure que l'image couvre l'espace sans être déformée */
+    object-fit: cover; 
+    display: block;
+}
+
+.error-message {
+    padding: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    font-weight: 600;
+}
