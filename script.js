@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- LOGIQUE DE RÉCUPÉRATION DES IMAGES GOOGLE DRIVE ---
 
-    const GOOGLE_DRIVE_API_URL = 'https://script.google.com/macros/s/AKfycbwFdUpmfnt6Im_iwdNn3NA9ecxrWZ5PeVn-stV3KW81gms8ZWPnAg6mIh3Cl4bm7rsYrQ/exec';
+    const GOOGLE_DRIVE_API_URL = 'https://script.google.com/macros/s/AKfycbyhmD1Il2X6XgcFgIoo__JfGwKs6gxNXAXi8kFRVWv84Y0mjkOLA352Crs4f7_kpJnE/exec';
 
     const galleryContainer = document.getElementById('media-gallery');
 
@@ -192,4 +192,5 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchDriveImages();
 
 });
+
 
