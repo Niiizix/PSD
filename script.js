@@ -101,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Gestion des erreurs de chargement d'image
         img.onerror = function() {
-            console.error("❌ Erreur de chargement pour l'image:", imageUrl);
             mediaItem.innerHTML = '<p style="color:red;">Image non disponible</p>';
         };
         
@@ -115,8 +114,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fonction principale de récupération des données
     async function fetchDriveImages() {
-        console.log("🚀 Tentative de fetch vers:", GOOGLE_DRIVE_API_URL);
-        
         try {
             // Ajout d'un timeout de 10 secondes
             const controller = new AbortController();
@@ -128,17 +125,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             clearTimeout(timeoutId);
             
-            console.log("📡 Réponse reçue, statut:", response.status);
-            console.log("📋 Headers:", [...response.headers.entries()]);
-            
             if (!response.ok) {
                 throw new Error(`Statut HTTP ${response.status}: ${response.statusText}`);
             }
             
             const rawText = await response.text(); 
-            console.log("--- RÉPONSE BRUTE (premiers 500 caractères) ---");
-            console.log(rawText.substring(0, 500));
-            console.log("-------------------------------");
             
             // Nettoyage du JSON
             const start = rawText.indexOf('[');
@@ -147,16 +138,15 @@ document.addEventListener('DOMContentLoaded', function() {
             let cleanedJson = rawText;
             if (start !== -1 && end !== -1 && end > start) {
                 cleanedJson = rawText.substring(start, end + 1);
-                console.log("🧹 JSON nettoyé (extrait du texte)");
+                console.log("🧹 JSON nettoyé");
             } else {
                 console.log("ℹ️ Pas de nettoyage nécessaire");
             }
             
             const data = JSON.parse(cleanedJson); 
-            console.log("✓ JSON parsé avec succès, nombre d'éléments:", data.length);
             
             if (data && Array.isArray(data)) {
-                galleryContainer.innerHTML = ''; // Vider le container
+                galleryContainer.innerHTML = '';
                 
                 if (data.length === 0) {
                     galleryContainer.innerHTML = '<p style="text-align:center;">📭 Aucune photo disponible pour le moment.</p>';
@@ -192,5 +182,6 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchDriveImages();
 
 });
+
 
 
