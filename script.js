@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("✓ DOM chargé, script initialisé");
+    
     const modal = document.getElementById("applicationModal");
     const openBtn = document.getElementById("openModalBtn");
     const closeBtn = document.querySelector(".close-btn");
@@ -9,19 +11,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- 1. Gestion de la Modale (Ouverture/Fermeture) ---
     
-    // Ouvrir la modale
-    openBtn.onclick = function() {
-        modal.style.display = "block";
-        body.style.overflow = "hidden"; // Empêche le défilement du body
+    if (openBtn) {
+        openBtn.onclick = function() {
+            modal.style.display = "block";
+            body.style.overflow = "hidden";
+        }
     }
 
-    // Fermer avec le bouton X
-    closeBtn.onclick = function() {
-        modal.style.display = "none";
-        body.style.overflow = "auto";
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            body.style.overflow = "auto";
+        }
     }
 
-    // Fermer si on clique en dehors de la modale
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
@@ -31,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- 2. Logique Conditionnelle (Partie 2) ---
 
-    // Fonction pour gérer l'affichage du champ "Si oui, Laquelle ?"
     window.toggleHiddenField = function(show) {
+        if (!hiddenField) return;
         const input = hiddenField.querySelector('input');
         
         if (show) {
@@ -44,118 +47,148 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // S'assurer que le champ conditionnel est masqué au chargement
     if (hiddenField) {
         hiddenField.style.display = 'none';
     }
 
-
-    // --- 3. Soumission du Formulaire (Simulée vers Google Sheets via iframe) ---
+    // --- 3. Soumission du Formulaire ---
     
-    // Intercepter la soumission du formulaire
-    form.addEventListener('submit', function(e) {
-        // Optionnel : S'assurer que le champ conditionnel masqué est vidé avant l'envoi
-        if (hiddenField.style.display === 'none') {
-            hiddenField.querySelector('input').value = '';
-        }
-        
-        // La soumission se fait vers l'iframe "hidden_iframe" (attribut target="hidden_iframe")
-        
-        // Afficher le message de succès immédiatement après l'envoi
-        formMessage.style.display = 'block'; 
-        form.reset(); // Vider le formulaire (pour donner l'impression que c'est fini)
-        
-        // Fermer la modale après un court délai
-        setTimeout(() => {
-            modal.style.display = "none";
-            body.style.overflow = "auto";
-            formMessage.style.display = 'none'; // Cacher le message pour la prochaine fois
-        }, 3000); 
-    });
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            if (hiddenField && hiddenField.style.display === 'none') {
+                hiddenField.querySelector('input').value = '';
+            }
+            
+            if (formMessage) {
+                formMessage.style.display = 'block'; 
+            }
+            form.reset();
+            
+            setTimeout(() => {
+                modal.style.display = "none";
+                body.style.overflow = "auto";
+                if (formMessage) {
+                    formMessage.style.display = 'none';
+                }
+            }, 3000); 
+        });
+    }
 
     // --- LOGIQUE DE RÉCUPÉRATION DES IMAGES GOOGLE DRIVE ---
 
-    // REMPLACEZ 'VOTRE_URL_APPS_SCRIPT' PAR L'URL DÉPLOYÉE
     const GOOGLE_DRIVE_API_URL = 'https://script.google.com/macros/s/AKfycbxVqszvJBfTJv6YdxStEic2rYeThAbkDk5Q9aV-Gd1iEuvfxJQvt1tPytS7pk2bLJ-Yww/exec'; 
 
     const galleryContainer = document.getElementById('media-gallery');
 
-    if (galleryContainer) {
-        // Supprime le message de chargement initial
-        galleryContainer.innerHTML = ''; 
-        
-        // Fonction pour générer le HTML d'un item de galerie
-        function createGalleryItem(imageUrl) {
-            const mediaItem = document.createElement('div');
-            mediaItem.classList.add('media-item');
-            
-            const img = document.createElement('img');
-            img.src = imageUrl;
-            img.alt = 'Photo de la Protective Services Division';
-            
-            mediaItem.appendChild(img);
-            galleryContainer.appendChild(mediaItem);
-        }
-
-        // Fonction principale de récupération des données
-        async function fetchDriveImages() {
-            try {
-                const response = await fetch(GOOGLE_DRIVE_API_URL);
-                
-                if (!response.ok) {
-                    throw new Error(`La requête API a échoué avec le statut : ${response.status}`);
-                }
-                
-                // --- AJOUT POUR LE DÉBOGAGE : LIRE ET AFFICHER LE TEXTE BRUT ---
-                const rawText = await response.text(); 
-                console.log("--- RÉPONSE BRUTE (TEXTE) ---");
-                console.log(rawText);
-                console.log("-------------------------------");
-                
-                // Remplacez 'response.json()' par la lecture du texte brut
-                const text = rawText; 
-                
-                // Étape de nettoyage : Tenter de trouver le début et la fin du tableau JSON
-                const start = text.indexOf('[');
-                const end = text.lastIndexOf(']');
-                
-                let cleanedJson = text;
-                if (start !== -1 && end !== -1 && end > start) {
-                    cleanedJson = text.substring(start, end + 1);
-                }
-                
-                // Afficher le JSON nettoyé avant de le parser
-                console.log("--- JSON NETTOYÉ ---");
-                console.log(cleanedJson);
-                
-                // Maintenant, on parse le JSON nettoyé
-                const data = JSON.parse(cleanedJson); 
-                
-                // data devrait être un tableau d'URLs
-                if (data && Array.isArray(data)) {
-                    data.forEach(url => {
-                        createGalleryItem(url);
-                    });
-
-                    if (data.length === 0) {
-                        galleryContainer.innerHTML = '<p>Aucune photo n\'est disponible pour le moment.</p>';
-                    }
-                } else {
-                     throw new Error('Le format de données JSON reçu est invalide ou vide après nettoyage.');
-                }
-                
-            } catch (error) {
-                console.error("ÉCHEC FATAL DE CHARGEMENT DE LA GALERIE :", error);
-                
-                document.getElementById('loading-error').style.display = 'block';
-                galleryContainer.innerHTML = `<p>Nous n\'avons pas pu charger la galerie. Vérifiez l\'URL de l\'API et assurez-vous qu\'elle est publique. (Détails: ${error.message ? error.message : 'Erreur réseau'})</p>`;
-            }
-        }
-
-        // Exécuter la fonction au chargement de la page
-        fetchDriveImages();
+    if (!galleryContainer) {
+        console.warn("⚠️ Container 'media-gallery' introuvable - pas sur la page média ?");
+        return;
     }
 
+    console.log("✓ Container galerie trouvé, début du chargement...");
+    
+    // Supprime le message de chargement initial
+    galleryContainer.innerHTML = '<p style="text-align:center;">⏳ Connexion à Google Drive...</p>'; 
+    
+    // Fonction pour générer le HTML d'un item de galerie
+    function createGalleryItem(imageUrl) {
+        const mediaItem = document.createElement('div');
+        mediaItem.classList.add('media-item');
+        
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = 'Photo de la Protective Services Division';
+        
+        // Gestion des erreurs de chargement d'image
+        img.onerror = function() {
+            console.error("❌ Erreur de chargement pour l'image:", imageUrl);
+            mediaItem.innerHTML = '<p style="color:red;">Image non disponible</p>';
+        };
+        
+        img.onload = function() {
+            console.log("✓ Image chargée:", imageUrl);
+        };
+        
+        mediaItem.appendChild(img);
+        galleryContainer.appendChild(mediaItem);
+    }
+
+    // Fonction principale de récupération des données
+    async function fetchDriveImages() {
+        console.log("🚀 Tentative de fetch vers:", GOOGLE_DRIVE_API_URL);
+        
+        try {
+            // Ajout d'un timeout de 10 secondes
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+            
+            const response = await fetch(GOOGLE_DRIVE_API_URL, {
+                signal: controller.signal
+            });
+            
+            clearTimeout(timeoutId);
+            
+            console.log("📡 Réponse reçue, statut:", response.status);
+            console.log("📋 Headers:", [...response.headers.entries()]);
+            
+            if (!response.ok) {
+                throw new Error(`Statut HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            const rawText = await response.text(); 
+            console.log("--- RÉPONSE BRUTE (premiers 500 caractères) ---");
+            console.log(rawText.substring(0, 500));
+            console.log("-------------------------------");
+            
+            // Nettoyage du JSON
+            const start = rawText.indexOf('[');
+            const end = rawText.lastIndexOf(']');
+            
+            let cleanedJson = rawText;
+            if (start !== -1 && end !== -1 && end > start) {
+                cleanedJson = rawText.substring(start, end + 1);
+                console.log("🧹 JSON nettoyé (extrait du texte)");
+            } else {
+                console.log("ℹ️ Pas de nettoyage nécessaire");
+            }
+            
+            const data = JSON.parse(cleanedJson); 
+            console.log("✓ JSON parsé avec succès, nombre d'éléments:", data.length);
+            
+            if (data && Array.isArray(data)) {
+                galleryContainer.innerHTML = ''; // Vider le container
+                
+                if (data.length === 0) {
+                    galleryContainer.innerHTML = '<p style="text-align:center;">📭 Aucune photo disponible pour le moment.</p>';
+                    console.warn("⚠️ Le dossier Drive est vide ou ne contient pas d'images");
+                } else {
+                    data.forEach((url, index) => {
+                        console.log(`➕ Ajout de l'image ${index + 1}/${data.length}`);
+                        createGalleryItem(url);
+                    });
+                    console.log("✅ Galerie complètement chargée !");
+                }
+            } else {
+                throw new Error('Format de données invalide (pas un tableau)');
+            }
+            
+        } catch (error) {
+            console.error("❌ ERREUR FATALE:", error);
+            console.error("Type d'erreur:", error.name);
+            console.error("Message:", error.message);
+            
+            if (error.name === 'AbortError') {
+                galleryContainer.innerHTML = '<p style="text-align:center;color:red;">⏱️ <strong>Timeout</strong> : Le serveur Google Apps Script ne répond pas. Vérifiez que votre script est déployé et public.</p>';
+            } else {
+                document.getElementById('loading-error').style.display = 'block';
+                galleryContainer.innerHTML = `<p style="text-align:center;color:red;">⚠️ Erreur de chargement : ${error.message}</p>
+                <p style="text-align:center;"><small>Ouvrez la console (F12) pour plus de détails</small></p>`;
+            }
+        }
+    }
+
+    // Exécuter la fonction au chargement de la page
+    console.log("🎬 Lancement de fetchDriveImages()");
+    fetchDriveImages();
+
 });
-
-
