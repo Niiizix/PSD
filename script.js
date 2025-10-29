@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log("✓ DOM chargé, script initialisé");
     
@@ -88,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("✓ Container galerie trouvé, début du chargement...");
     
     // Supprime le message de chargement initial
-    galleryContainer.innerHTML = '<p style="text-align:center;">⏳ Connexion à Google Drive...</p>'; 
+    galleryContainer.innerHTML = '<p style="text-align:center;">Chargement des photos...</p>'; 
     
     // Fonction pour générer le HTML d'un item de galerie
     function createGalleryItem(imageUrl) {
@@ -182,6 +183,3 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchDriveImages();
 
 });
-
-
-
