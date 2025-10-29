@@ -106,11 +106,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     throw new Error(`La requête API a échoué avec le statut : ${response.status}`);
                 }
                 
-                // CHANGEMENT CRUCIAL : Lire la réponse comme du texte brut pour la nettoyer
-                const text = await response.text();
+                // --- AJOUT POUR LE DÉBOGAGE : LIRE ET AFFICHER LE TEXTE BRUT ---
+                const rawText = await response.text(); 
+                console.log("--- RÉPONSE BRUTE (TEXTE) ---");
+                console.log(rawText);
+                console.log("-------------------------------");
+                
+                // Remplacez 'response.json()' par la lecture du texte brut
+                const text = rawText; 
                 
                 // Étape de nettoyage : Tenter de trouver le début et la fin du tableau JSON
-                // Cela élimine tout texte parasite (comme l'entête 'Access-Control-Allow-Origin: *')
                 const start = text.indexOf('[');
                 const end = text.lastIndexOf(']');
                 
@@ -118,6 +123,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (start !== -1 && end !== -1 && end > start) {
                     cleanedJson = text.substring(start, end + 1);
                 }
+                
+                // Afficher le JSON nettoyé avant de le parser
+                console.log("--- JSON NETTOYÉ ---");
+                console.log(cleanedJson);
                 
                 // Maintenant, on parse le JSON nettoyé
                 const data = JSON.parse(cleanedJson); 
@@ -148,4 +157,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
 
