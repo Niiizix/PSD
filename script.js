@@ -100,15 +100,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Fonction principale de récupération des données
         async function fetchDriveImages() {
             try {
+                // Tente d'exécuter la requête
                 const response = await fetch(GOOGLE_DRIVE_API_URL);
                 
                 if (!response.ok) {
-                    throw new Error(`Erreur HTTP: ${response.status}`);
+                    // Si le statut HTTP n'est pas 200 (OK), on lève une erreur explicite
+                    throw new Error(`La requête API a échoué avec le statut : ${response.status}`);
                 }
                 
                 const data = await response.json();
                 
-                // data devrait être un tableau d'URLs : ex: ['url1', 'url2', ...]
+                // data devrait être un tableau d'URLs
                 if (data && Array.isArray(data)) {
                     data.forEach(url => {
                         createGalleryItem(url);
@@ -118,20 +120,21 @@ document.addEventListener('DOMContentLoaded', function() {
                         galleryContainer.innerHTML = '<p>Aucune photo n\'est disponible pour le moment.</p>';
                     }
                 } else {
-                     throw new Error('Format de données JSON invalide.');
+                     throw new Error('Le format de données JSON reçu est invalide ou vide.');
                 }
                 
             } catch (error) {
-                console.error("Échec de la récupération des images Google Drive:", error);
+                // Cette section capture les erreurs de réseau (pas de connexion) ou les erreurs levées ci-dessus
+                console.error("ÉCHEC FATAL DE CHARGEMENT DE LA GALERIE :", error);
                 
-                // Afficher le message d'erreur à l'utilisateur
+                // Remplacer le contenu par le message d'erreur
                 document.getElementById('loading-error').style.display = 'block';
-                galleryContainer.innerHTML = '<p>Nous n\'avons pas pu charger la galerie. Veuillez vérifier la console pour plus de détails.</p>';
-
+                galleryContainer.innerHTML = `<p>Nous n\'avons pas pu charger la galerie. (Détails: ${error.message ? error.message : 'Erreur réseau/CORS'})</p>`;
             }
         }
 
         // Exécuter la fonction au chargement de la page
         fetchDriveImages();
     }
+
 });
