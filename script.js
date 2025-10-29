@@ -100,15 +100,27 @@ document.addEventListener('DOMContentLoaded', function() {
         // Fonction principale de récupération des données
         async function fetchDriveImages() {
             try {
-                // Tente d'exécuter la requête
                 const response = await fetch(GOOGLE_DRIVE_API_URL);
                 
                 if (!response.ok) {
-                    // Si le statut HTTP n'est pas 200 (OK), on lève une erreur explicite
                     throw new Error(`La requête API a échoué avec le statut : ${response.status}`);
                 }
                 
-                const data = await response.json();
+                // CHANGEMENT CRUCIAL : Lire la réponse comme du texte brut pour la nettoyer
+                const text = await response.text();
+                
+                // Étape de nettoyage : Tenter de trouver le début et la fin du tableau JSON
+                // Cela élimine tout texte parasite (comme l'entête 'Access-Control-Allow-Origin: *')
+                const start = text.indexOf('[');
+                const end = text.lastIndexOf(']');
+                
+                let cleanedJson = text;
+                if (start !== -1 && end !== -1 && end > start) {
+                    cleanedJson = text.substring(start, end + 1);
+                }
+                
+                // Maintenant, on parse le JSON nettoyé
+                const data = JSON.parse(cleanedJson); 
                 
                 // data devrait être un tableau d'URLs
                 if (data && Array.isArray(data)) {
@@ -120,16 +132,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         galleryContainer.innerHTML = '<p>Aucune photo n\'est disponible pour le moment.</p>';
                     }
                 } else {
-                     throw new Error('Le format de données JSON reçu est invalide ou vide.');
+                     throw new Error('Le format de données JSON reçu est invalide ou vide après nettoyage.');
                 }
                 
             } catch (error) {
-                // Cette section capture les erreurs de réseau (pas de connexion) ou les erreurs levées ci-dessus
                 console.error("ÉCHEC FATAL DE CHARGEMENT DE LA GALERIE :", error);
                 
-                // Remplacer le contenu par le message d'erreur
                 document.getElementById('loading-error').style.display = 'block';
-                galleryContainer.innerHTML = `<p>Nous n\'avons pas pu charger la galerie. (Détails: ${error.message ? error.message : 'Erreur réseau/CORS'})</p>`;
+                galleryContainer.innerHTML = `<p>Nous n\'avons pas pu charger la galerie. Vérifiez l\'URL de l\'API et assurez-vous qu\'elle est publique. (Détails: ${error.message ? error.message : 'Erreur réseau'})</p>`;
             }
         }
 
@@ -138,3 +148,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
