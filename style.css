@@ -978,3 +978,355 @@ body {
     border-radius: 4px;
     font-weight: 600;
 }
+
+/* --- TABLETTES (Max 1024px) --- */
+@media screen and (max-width: 1024px) {
+    
+    /* Header - Réduction espacement navigation */
+    .psd-nav > ul {
+        margin-left: 50px;
+        gap: 5px;
+    }
+    
+    .psd-nav li a {
+        padding: 8px 10px;
+        font-size: 0.85em;
+    }
+    
+    .sahp-logo {
+        height: 70px;
+    }
+    
+    /* Section Mission - Passage en colonne */
+    .mission-section {
+        flex-direction: column;
+        gap: 30px;
+        margin: 50px auto;
+    }
+    
+    .mission-image-placeholder {
+        min-height: 250px;
+        width: 100%;
+    }
+    
+    /* Section Contact/Info */
+    .info-content-placeholder {
+        flex-direction: column;
+    }
+    
+    .contact-image-placeholder {
+        min-height: 300px;
+        width: 100%;
+    }
+    
+    /* Galerie Médias - 2 colonnes */
+    .media-gallery-grid {
+        column-count: 2;
+    }
+    
+    /* Grille hiérarchie - 2 colonnes */
+    .hierarchy-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+/* --- TABLETTES PETITES (Max 768px) --- */
+@media screen and (max-width: 768px) {
+    
+    /* Header - Navigation verticale */
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .psd-nav > ul {
+        margin-left: 0;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 0;
+    }
+    
+    .psd-nav li {
+        width: 100%;
+    }
+    
+    .psd-nav li a {
+        padding: 12px;
+        justify-content: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Dropdown - Sous-menu */
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    
+    .dropdown-parent:hover .dropdown-menu {
+        display: block;
+    }
+    
+    /* Hero Section - Texte plus petit */
+    .hero-section {
+        height: 60vh;
+    }
+    
+    .hero-overlay h1 {
+        font-size: 2em;
+        letter-spacing: 2px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1em;
+    }
+    
+    /* Sections générales */
+    .section-content {
+        padding: 30px 20px;
+    }
+    
+    .section-content h2 {
+        font-size: 1.6em;
+    }
+    
+    /* Contact Grid - 1 colonne */
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .map-placeholder {
+        grid-column: 1;
+    }
+    
+    .map-embed-box {
+        height: 300px;
+    }
+    
+    /* Mission Section */
+    .mission-text-content h2 {
+        font-size: 1.6em;
+    }
+    
+    /* Recruitment CTA */
+    .recruitment-cta h2 {
+        font-size: 1.8em;
+    }
+    
+    .recruitment-cta p {
+        font-size: 1em;
+    }
+    
+    /* Footer */
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer-links-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .footer-links-group a {
+        margin-left: 0;
+    }
+}
+
+/* --- MOBILE (Max 576px) --- */
+@media screen and (max-width: 576px) {
+    
+    /* Warning Banner */
+    .gtarp-warning {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+    
+    /* Logo plus petit */
+    .sahp-logo {
+        height: 60px;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+        height: 50vh;
+    }
+    
+    .hero-overlay {
+        padding: 20px;
+    }
+    
+    .hero-overlay h1 {
+        font-size: 1.5em;
+        letter-spacing: 1px;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+    
+    /* Boutons */
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    
+    /* Sections */
+    .mission-section {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+    
+    .mission-image-placeholder {
+        min-height: 200px;
+    }
+    
+    .contact-image-placeholder {
+        min-height: 200px;
+    }
+    
+    .info-contact-section {
+        margin: 40px auto;
+        padding: 0 15px;
+    }
+    
+    .contact-details {
+        padding: 20px;
+    }
+    
+    .contact-details h2 {
+        font-size: 1.4em;
+    }
+    
+    /* Recruitment */
+    .recruitment-cta {
+        padding: 40px 15px;
+    }
+    
+    .recruitment-cta h2 {
+        font-size: 1.5em;
+    }
+    
+    /* Liste prérequis et processus */
+    .prerequis-list li {
+        padding: 12px;
+        font-size: 0.95em;
+    }
+    
+    .processus-list li {
+        padding: 15px;
+        padding-top: 30px;
+    }
+    
+    .processus-list li strong {
+        font-size: 1.1em;
+    }
+    
+    /* Galerie Médias - 1 colonne sur mobile */
+    .media-gallery-grid {
+        column-count: 1;
+    }
+    
+    /* Hiérarchie - 1 colonne */
+    .hierarchy-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Modal Formulaire */
+    .modal-content {
+        width: 98%;
+        padding: 20px 15px;
+        margin: 2% auto;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.6em;
+    }
+    
+    .form-intro {
+        font-size: 0.95em;
+    }
+    
+    #recruitment-form fieldset {
+        padding: 15px;
+    }
+    
+    #recruitment-form legend {
+        font-size: 1.2em;
+    }
+    
+    /* Échelles radio - Vertical sur mobile */
+    .scale-radio-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .scale-radio-container label {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .scale-label-text {
+        font-size: 1em;
+    }
+    
+    /* Grille 2 colonnes devient 1 */
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Contact List */
+    .contact-list {
+        font-size: 0.95em;
+    }
+    
+    .contact-card {
+        padding: 20px;
+    }
+    
+    .contact-card h2 {
+        font-size: 1.3em;
+    }
+}
+
+/* --- TRÈS PETITS MOBILES (Max 380px) --- */
+@media screen and (max-width: 380px) {
+    
+    .hero-overlay h1 {
+        font-size: 1.3em;
+    }
+    
+    .sahp-logo {
+        height: 50px;
+    }
+    
+    .psd-nav li a {
+        font-size: 0.8em;
+        padding: 10px;
+    }
+    
+    .modal-content {
+        padding: 15px 10px;
+    }
+    
+    .close-btn {
+        font-size: 28px;
+        right: 10px;
+        top: 5px;
+    }
+    
+    #recruitment-form fieldset {
+        padding: 10px;
+    }
+    
+    .btn-primary {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+}
